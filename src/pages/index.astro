@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ItemSummary from '../components/ItemSummary.astro';
+import type { Props } from '../components/ItemSummary.astro';
+
+const summaryItems : Props[] = [
+	{
+		title: 'Reaction',
+		color: '#F55',
+		score: 80,
+		icon: 'reaction',
+		bgColor: 'red-50',
+	},
+	{
+		title: 'Memory',
+		color: '#FFB21E',
+		score: 92,
+		icon: 'memory',
+		bgColor: 'orange-50',
+	},
+	{
+		title: 'Verbal',
+		color: '#00BB8F',
+		score: 61,
+		icon: 'verbal',
+		bgColor: 'cyan-50',
+	},
+	{
+		title: 'Visual',
+		color: '#1125D6',
+		score: 72,
+		icon: 'visual',
+		bgColor: 'indigo-50',
+	},
+	
+];
+---
+
+<Layout title="Frontend Mentor | Results Summary Component Main">
+	<main class="grid grid-cols-1 w-screen min-w-[320px] md:grid-cols-2 md:w-3/5 m-auto md:shadow-sh md:rounded-3xl md:overflow-hidden">
+		<article class="bg-result text-white py-10 px-14 text-center gap-5 flex flex-col items-center rounded-b-3xl md:py-8 md:px-10 md:rounded-3xl">
+			<p class="text-lg text-[#d4c5ff]">Your Result</p>
+			<p class="bg-[#4a24cf] aspect-square max-w-[140px] p-10 rounded-full flex flex-col justify-center">
+				<span class="font-bold text-6xl">76</span>
+				<span class="text-[#d4c5ff] text-sm">of 100</span>
+			</p>
+
+			<div class="flex flex-col gap-2">
+				<p class="font-bold text-2xl">Great</p>
+				<p class="text-[#d4c5ff]">You scored higher than 65% of the people who have taken these tests</p>
+			</div>
+		</article>
+		<section class="flex flex-col justify-center gap-4 px-6 py-4">
+			<h1 class="font-semibold text-gray-800">Summary</h1>
+			<ul class="flex flex-col gap-4">
+				{summaryItems.map(item => (
+					<ItemSummary {...item} />
+				))}
+			</ul>
+			<button class="bg-[#303b59] text-white rounded-full py-2 px-10 font-bold">Continue</button>
+		</section>
+	</main>
+</Layout>

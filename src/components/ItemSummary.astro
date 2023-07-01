@@ -1,0 +1,33 @@
+---
+import IconMemory from './IconMemory.astro';
+import IconReaction from './IconReaction.astro';
+import IconVerbal from './IconVerbal.astro';
+import IconVisual from './IconVisual.astro';
+
+const ICONS = {
+    memory: "memory",
+    visual: "visual",
+    reaction: "reaction",
+    verbal: "verbal",
+};
+
+export interface Props {
+	title: string;
+    color: string;
+    score: number;
+    icon: keyof typeof ICONS;
+    bgColor: string;
+}
+
+const { title, color, score, icon, bgColor } = Astro.props;
+---
+
+<li class={`bg-${bgColor} flex gap-2 p-3 rounded-lg text-sm font-medium`}>
+    {icon === ICONS.memory && <IconMemory />}
+    {icon === ICONS.visual && <IconVisual />}
+    {icon === ICONS.reaction && <IconReaction />}
+    {icon === ICONS.verbal && <IconVerbal />}
+
+    <p class={`text-[${color}]`}>{title}</p>
+    <p class="ml-auto">{score} <span class="text-slate-400">/ 100</span></p>
+</li>

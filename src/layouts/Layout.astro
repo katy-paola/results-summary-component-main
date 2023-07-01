@@ -1,0 +1,54 @@
+---
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="./images/favicon.png" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class="grid content-start min-h-screen md:place-content-center">
+		<slot />
+		<footer class="md:absolute bottom-0 flex flex-col items-center w-full p-4 bg-slate-200 [&>p>a]:underline hover:[&>p>a]:no-underline text-sm">
+			<p>Challenge by <a href="https://frontendmentor.io">Frontend Mentor</a></p>
+			<p>Coded by <a href="https://www.linkedin.com/in/katy-barboza-baena-406333203/">Katy Barboza</a> and <a href="https://github.com/pipegoods">Andrés Vizcaíno</a></p>
+		</footer>
+	</body>
+</html>
+<style is:global>
+	@font-face {
+		font-family: "Hanken Grotesk";
+		src: url("./fonts/HankenGrotesk-Medium.woff2") format("woff2"),
+			url("./fonts/HankenGrotesk-Medium.woff") format("woff");
+		font-weight: 500;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "Hanken Grotesk";
+		src: url("./fonts/HankenGrotesk-Bold.woff2") format("woff2"),
+			url("./fonts/HankenGrotesk-Bold.woff") format("woff");
+		font-weight: bold;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "Hanken Grotesk";
+		src: url("./fonts/HankenGrotesk-ExtraBold.woff2") format("woff2"),
+			url("./fonts/HankenGrotesk-ExtraBold.woff") format("woff");
+		font-weight: bold;
+		font-style: normal;
+		font-display: swap;
+	}
+</style>
