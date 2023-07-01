@@ -11,23 +11,26 @@ const ICONS = {
     verbal: "verbal",
 };
 
+type ColorsBg = "red" | "orange" | "cyan" | "indigo"
+type ColorsText = "red" | "orange" | "green" | "blue"
+
 export interface Props {
 	title: string;
-    color: string;
+    color: ColorsText;
     score: number;
     icon: keyof typeof ICONS;
-    bgColor: string;
+    bgColor: ColorsBg;
 }
 
 const { title, color, score, icon, bgColor } = Astro.props;
 ---
 
-<li class={`bg-${bgColor} flex gap-2 p-3 rounded-lg text-sm font-medium`}>
+<li class={`${bgColor === "red" && "bg-red-50"} ${bgColor === "orange" && "bg-orange-50"} ${bgColor === "cyan" && "bg-cyan-50"} ${bgColor === "indigo" && "bg-indigo-50"} flex gap-2 p-3 rounded-lg text-sm font-medium`}>
     {icon === ICONS.memory && <IconMemory />}
     {icon === ICONS.visual && <IconVisual />}
     {icon === ICONS.reaction && <IconReaction />}
     {icon === ICONS.verbal && <IconVerbal />}
 
-    <p class={`text-[${color}]`}>{title}</p>
+    <p class={`${color === "red" && "text-[#F55]"} ${color === "orange" && "text-[#FFB21E]"} ${color === "green" && "text-[#00BB8F]"} ${color === "blue" && "text-[#1125D6]"}`}>{title}</p>
     <p class="ml-auto">{score} <span class="text-slate-400">/ 100</span></p>
 </li>
